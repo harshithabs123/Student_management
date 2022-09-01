@@ -1,0 +1,75 @@
+{% extends 'students/base.html'%} {% block title %} Login Page {% endblock %} 
+{% block body %}
+<form action="signup" method="POST">
+  {% csrf_token %}
+  <div class="container my-3">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        aria-describedby="emailHelp"
+        placeholder="Enter Name"
+        required
+      />
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          aria-describedby="emailHelp"
+          placeholder="Enter Email"
+          required
+        />
+        {% if message.email is not None %}
+        <p>{{message.email}}</p>
+        {% endif %}
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact Number</label>
+        <input
+          type="number"
+          class="form-control"
+          id="contact"
+          name="contact"
+          aria-describedby="emailHelp"
+          placeholder="Enter Contact Number"
+          required
+        />
+      </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder="Enter password"
+        required
+      />
+      {% if message.password is not None %}
+        <p>{{message.password}}</p>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="confirm_password">Comfirm Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="confirm_password"
+        name="confirm_password"
+        placeholder="Enter assword"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+{% endblock %}
